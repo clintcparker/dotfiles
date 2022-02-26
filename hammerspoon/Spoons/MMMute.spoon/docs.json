@@ -1,0 +1,379 @@
+[
+  {
+    "Constant" : [
+
+    ],
+    "submodules" : [
+
+    ],
+    "Function" : [
+
+    ],
+    "Variable" : [
+
+    ],
+    "stripped_doc" : [
+
+    ],
+    "type" : "Module",
+    "desc" : "Mute Toggle and status indicator based on MicMute",
+    "Deprecated" : [
+
+    ],
+    "Constructor" : [
+
+    ],
+    "doc" : "Mute Toggle and status indicator based on MicMute \n\nThis module provides a number of functions for working with mics",
+    "Method" : [
+      {
+        "doc" : "Update MMMute\n\nParameters:\n * muted - boolean",
+        "name" : "updateMMMute",
+        "def" : "MMMute:updateMMMute(muted)",
+        "stripped_doc" : [
+          "Update MMMute",
+          ""
+        ],
+        "notes" : [
+
+        ],
+        "signature" : "MMMute:updateMMMute(muted)",
+        "type" : "Method",
+        "returns" : [
+
+        ],
+        "desc" : "Update MMMute",
+        "parameters" : [
+          " * muted - boolean"
+        ]
+      },
+      {
+        "doc" : "Toggle mic mute on\/off\n\nParameters:\n * None",
+        "name" : "toggleMMMute",
+        "def" : "MMMute:toggleMMMute()",
+        "stripped_doc" : [
+          "Toggle mic mute on\/off",
+          ""
+        ],
+        "notes" : [
+
+        ],
+        "signature" : "MMMute:toggleMMMute()",
+        "type" : "Method",
+        "returns" : [
+
+        ],
+        "desc" : "Toggle mic mute on\/off",
+        "parameters" : [
+          " * None"
+        ]
+      },
+      {
+        "doc" : "Unmute Zoom\n\nParameters:\n * None",
+        "name" : "unmuteZoom",
+        "def" : "MMMute:unmuteZoom()",
+        "stripped_doc" : [
+          "Unmute Zoom",
+          ""
+        ],
+        "notes" : [
+
+        ],
+        "signature" : "MMMute:unmuteZoom()",
+        "type" : "Method",
+        "returns" : [
+
+        ],
+        "desc" : "Unmute Zoom",
+        "parameters" : [
+          " * None"
+        ]
+      },
+      {
+        "doc" : "Mute Zoom\n\nParameters:\n * None",
+        "name" : "muteZoom",
+        "def" : "MMMute:muteZoom()",
+        "stripped_doc" : [
+          "Mute Zoom",
+          ""
+        ],
+        "notes" : [
+
+        ],
+        "signature" : "MMMute:muteZoom()",
+        "type" : "Method",
+        "returns" : [
+
+        ],
+        "desc" : "Mute Zoom",
+        "parameters" : [
+          " * None"
+        ]
+      },
+      {
+        "doc" : "Toggle mic mute on\/off\n\nParameters:\n * None",
+        "name" : "toggleInputVolume",
+        "def" : "MMMute:toggleInputVolume()",
+        "stripped_doc" : [
+          "Toggle mic mute on\/off",
+          ""
+        ],
+        "notes" : [
+
+        ],
+        "signature" : "MMMute:toggleInputVolume()",
+        "type" : "Method",
+        "returns" : [
+
+        ],
+        "desc" : "Toggle mic mute on\/off",
+        "parameters" : [
+          " * None"
+        ]
+      },
+      {
+        "doc" : "Binds hotkeys for MMMute\n\nParameters:\n * mapping - A table containing hotkey modifier\/key details for the following items:\n  * toggle - This will cause the microphone mute status to be toggled. Hold for momentary, press quickly for toggle.\n * latch_timeout - Time in seconds to hold the hotkey before momentary mode takes over, in which the mute will be toggled again when hotkey is released. Latch if released before this time. 0.75 for 750 milliseconds is a good value.",
+        "name" : "bindHotkeys",
+        "def" : "MMMute:bindHotkeys(mapping, latch_timeout)",
+        "stripped_doc" : [
+          "Binds hotkeys for MMMute",
+          ""
+        ],
+        "notes" : [
+
+        ],
+        "signature" : "MMMute:bindHotkeys(mapping, latch_timeout)",
+        "type" : "Method",
+        "returns" : [
+
+        ],
+        "desc" : "Binds hotkeys for MMMute",
+        "parameters" : [
+          " * mapping - A table containing hotkey modifier\/key details for the following items:",
+          "  * toggle - This will cause the microphone mute status to be toggled. Hold for momentary, press quickly for toggle.",
+          " * latch_timeout - Time in seconds to hold the hotkey before momentary mode takes over, in which the mute will be toggled again when hotkey is released. Latch if released before this time. 0.75 for 750 milliseconds is a good value."
+        ]
+      },
+      {
+        "doc" : "Sets the default volume for the input device\n\nParameters:\n* default_input_volume - The default volume for the input device",
+        "name" : "setDefaultVolume",
+        "def" : "MMMute:setDefaultVolume(default_input_volume)",
+        "stripped_doc" : [
+          "Sets the default volume for the input device",
+          ""
+        ],
+        "notes" : [
+
+        ],
+        "signature" : "MMMute:setDefaultVolume(default_input_volume)",
+        "type" : "Method",
+        "returns" : [
+
+        ],
+        "desc" : "Sets the default volume for the input device",
+        "parameters" : [
+          "* default_input_volume - The default volume for the input device"
+        ]
+      },
+      {
+        "doc" : "Initialize the module\n\nParameters:\n * None",
+        "name" : "init",
+        "def" : "MMMute:init()",
+        "stripped_doc" : [
+          "Initialize the module",
+          ""
+        ],
+        "notes" : [
+
+        ],
+        "signature" : "MMMute:init()",
+        "type" : "Method",
+        "returns" : [
+
+        ],
+        "desc" : "Initialize the module",
+        "parameters" : [
+          " * None"
+        ]
+      }
+    ],
+    "Command" : [
+
+    ],
+    "Field" : [
+
+    ],
+    "items" : [
+      {
+        "doc" : "Binds hotkeys for MMMute\n\nParameters:\n * mapping - A table containing hotkey modifier\/key details for the following items:\n  * toggle - This will cause the microphone mute status to be toggled. Hold for momentary, press quickly for toggle.\n * latch_timeout - Time in seconds to hold the hotkey before momentary mode takes over, in which the mute will be toggled again when hotkey is released. Latch if released before this time. 0.75 for 750 milliseconds is a good value.",
+        "name" : "bindHotkeys",
+        "def" : "MMMute:bindHotkeys(mapping, latch_timeout)",
+        "stripped_doc" : [
+          "Binds hotkeys for MMMute",
+          ""
+        ],
+        "notes" : [
+
+        ],
+        "signature" : "MMMute:bindHotkeys(mapping, latch_timeout)",
+        "type" : "Method",
+        "returns" : [
+
+        ],
+        "desc" : "Binds hotkeys for MMMute",
+        "parameters" : [
+          " * mapping - A table containing hotkey modifier\/key details for the following items:",
+          "  * toggle - This will cause the microphone mute status to be toggled. Hold for momentary, press quickly for toggle.",
+          " * latch_timeout - Time in seconds to hold the hotkey before momentary mode takes over, in which the mute will be toggled again when hotkey is released. Latch if released before this time. 0.75 for 750 milliseconds is a good value."
+        ]
+      },
+      {
+        "doc" : "Initialize the module\n\nParameters:\n * None",
+        "name" : "init",
+        "def" : "MMMute:init()",
+        "stripped_doc" : [
+          "Initialize the module",
+          ""
+        ],
+        "notes" : [
+
+        ],
+        "signature" : "MMMute:init()",
+        "type" : "Method",
+        "returns" : [
+
+        ],
+        "desc" : "Initialize the module",
+        "parameters" : [
+          " * None"
+        ]
+      },
+      {
+        "doc" : "Mute Zoom\n\nParameters:\n * None",
+        "name" : "muteZoom",
+        "def" : "MMMute:muteZoom()",
+        "stripped_doc" : [
+          "Mute Zoom",
+          ""
+        ],
+        "notes" : [
+
+        ],
+        "signature" : "MMMute:muteZoom()",
+        "type" : "Method",
+        "returns" : [
+
+        ],
+        "desc" : "Mute Zoom",
+        "parameters" : [
+          " * None"
+        ]
+      },
+      {
+        "doc" : "Sets the default volume for the input device\n\nParameters:\n* default_input_volume - The default volume for the input device",
+        "name" : "setDefaultVolume",
+        "def" : "MMMute:setDefaultVolume(default_input_volume)",
+        "stripped_doc" : [
+          "Sets the default volume for the input device",
+          ""
+        ],
+        "notes" : [
+
+        ],
+        "signature" : "MMMute:setDefaultVolume(default_input_volume)",
+        "type" : "Method",
+        "returns" : [
+
+        ],
+        "desc" : "Sets the default volume for the input device",
+        "parameters" : [
+          "* default_input_volume - The default volume for the input device"
+        ]
+      },
+      {
+        "doc" : "Toggle mic mute on\/off\n\nParameters:\n * None",
+        "name" : "toggleInputVolume",
+        "def" : "MMMute:toggleInputVolume()",
+        "stripped_doc" : [
+          "Toggle mic mute on\/off",
+          ""
+        ],
+        "notes" : [
+
+        ],
+        "signature" : "MMMute:toggleInputVolume()",
+        "type" : "Method",
+        "returns" : [
+
+        ],
+        "desc" : "Toggle mic mute on\/off",
+        "parameters" : [
+          " * None"
+        ]
+      },
+      {
+        "doc" : "Toggle mic mute on\/off\n\nParameters:\n * None",
+        "name" : "toggleMMMute",
+        "def" : "MMMute:toggleMMMute()",
+        "stripped_doc" : [
+          "Toggle mic mute on\/off",
+          ""
+        ],
+        "notes" : [
+
+        ],
+        "signature" : "MMMute:toggleMMMute()",
+        "type" : "Method",
+        "returns" : [
+
+        ],
+        "desc" : "Toggle mic mute on\/off",
+        "parameters" : [
+          " * None"
+        ]
+      },
+      {
+        "doc" : "Unmute Zoom\n\nParameters:\n * None",
+        "name" : "unmuteZoom",
+        "def" : "MMMute:unmuteZoom()",
+        "stripped_doc" : [
+          "Unmute Zoom",
+          ""
+        ],
+        "notes" : [
+
+        ],
+        "signature" : "MMMute:unmuteZoom()",
+        "type" : "Method",
+        "returns" : [
+
+        ],
+        "desc" : "Unmute Zoom",
+        "parameters" : [
+          " * None"
+        ]
+      },
+      {
+        "doc" : "Update MMMute\n\nParameters:\n * muted - boolean",
+        "name" : "updateMMMute",
+        "def" : "MMMute:updateMMMute(muted)",
+        "stripped_doc" : [
+          "Update MMMute",
+          ""
+        ],
+        "notes" : [
+
+        ],
+        "signature" : "MMMute:updateMMMute(muted)",
+        "type" : "Method",
+        "returns" : [
+
+        ],
+        "desc" : "Update MMMute",
+        "parameters" : [
+          " * muted - boolean"
+        ]
+      }
+    ],
+    "name" : "MMMute"
+  }
+]

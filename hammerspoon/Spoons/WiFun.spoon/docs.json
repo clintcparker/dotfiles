@@ -1,0 +1,249 @@
+[
+  {
+    "Constant" : [
+
+    ],
+    "submodules" : [
+
+    ],
+    "Function" : [
+
+    ],
+    "Variable" : [
+
+    ],
+    "stripped_doc" : [
+
+    ],
+    "desc" : "WiFi tools",
+    "type" : "Module",
+    "Deprecated" : [
+
+    ],
+    "Constructor" : [
+
+    ],
+    "items" : [
+      {
+        "def" : "WiFun:disconnectWiFi()",
+        "stripped_doc" : [
+          "Disconnect WiFi",
+          ""
+        ],
+        "name" : "disconnectWiFi",
+        "doc" : "Disconnect WiFi\n\nParameters:\n * None",
+        "notes" : [
+
+        ],
+        "signature" : "WiFun:disconnectWiFi()",
+        "type" : "Method",
+        "returns" : [
+
+        ],
+        "desc" : "Disconnect WiFi",
+        "parameters" : [
+          " * None"
+        ]
+      },
+      {
+        "def" : "WiFun:init()",
+        "stripped_doc" : [
+          "Initialize the WiFun module.",
+          ""
+        ],
+        "name" : "init",
+        "doc" : "Initialize the WiFun module.\n\nParameters:\n * None",
+        "notes" : [
+
+        ],
+        "signature" : "WiFun:init()",
+        "type" : "Method",
+        "returns" : [
+
+        ],
+        "desc" : "Initialize the WiFun module.",
+        "parameters" : [
+          " * None"
+        ]
+      },
+      {
+        "def" : "WiFun:reconnectWiFi()",
+        "stripped_doc" : [
+          "Reconnect WiFi",
+          ""
+        ],
+        "name" : "reconnectWiFi",
+        "doc" : "Reconnect WiFi\n\nParameters:\n * None",
+        "notes" : [
+
+        ],
+        "signature" : "WiFun:reconnectWiFi()",
+        "type" : "Method",
+        "returns" : [
+
+        ],
+        "desc" : "Reconnect WiFi",
+        "parameters" : [
+          " * None"
+        ]
+      },
+      {
+        "def" : "WiFun:refreshWiFi()",
+        "stripped_doc" : [
+          "Refresh WiFi menu",
+          ""
+        ],
+        "name" : "refreshWiFi",
+        "doc" : "Refresh WiFi menu\n\nParameters:\n * None",
+        "notes" : [
+
+        ],
+        "signature" : "WiFun:refreshWiFi()",
+        "type" : "Method",
+        "returns" : [
+
+        ],
+        "desc" : "Refresh WiFi menu",
+        "parameters" : [
+          " * None"
+        ]
+      },
+      {
+        "def" : "WiFun:toggleWiFi()",
+        "stripped_doc" : [
+          "Toggle WiFi on\/off",
+          ""
+        ],
+        "name" : "toggleWiFi",
+        "doc" : "Toggle WiFi on\/off\n\nParameters:\n * None",
+        "notes" : [
+
+        ],
+        "signature" : "WiFun:toggleWiFi()",
+        "type" : "Method",
+        "returns" : [
+
+        ],
+        "desc" : "Toggle WiFi on\/off",
+        "parameters" : [
+          " * None"
+        ]
+      }
+    ],
+    "Method" : [
+      {
+        "def" : "WiFun:toggleWiFi()",
+        "stripped_doc" : [
+          "Toggle WiFi on\/off",
+          ""
+        ],
+        "name" : "toggleWiFi",
+        "doc" : "Toggle WiFi on\/off\n\nParameters:\n * None",
+        "notes" : [
+
+        ],
+        "signature" : "WiFun:toggleWiFi()",
+        "type" : "Method",
+        "returns" : [
+
+        ],
+        "desc" : "Toggle WiFi on\/off",
+        "parameters" : [
+          " * None"
+        ]
+      },
+      {
+        "def" : "WiFun:disconnectWiFi()",
+        "stripped_doc" : [
+          "Disconnect WiFi",
+          ""
+        ],
+        "name" : "disconnectWiFi",
+        "doc" : "Disconnect WiFi\n\nParameters:\n * None",
+        "notes" : [
+
+        ],
+        "signature" : "WiFun:disconnectWiFi()",
+        "type" : "Method",
+        "returns" : [
+
+        ],
+        "desc" : "Disconnect WiFi",
+        "parameters" : [
+          " * None"
+        ]
+      },
+      {
+        "def" : "WiFun:reconnectWiFi()",
+        "stripped_doc" : [
+          "Reconnect WiFi",
+          ""
+        ],
+        "name" : "reconnectWiFi",
+        "doc" : "Reconnect WiFi\n\nParameters:\n * None",
+        "notes" : [
+
+        ],
+        "signature" : "WiFun:reconnectWiFi()",
+        "type" : "Method",
+        "returns" : [
+
+        ],
+        "desc" : "Reconnect WiFi",
+        "parameters" : [
+          " * None"
+        ]
+      },
+      {
+        "def" : "WiFun:refreshWiFi()",
+        "stripped_doc" : [
+          "Refresh WiFi menu",
+          ""
+        ],
+        "name" : "refreshWiFi",
+        "doc" : "Refresh WiFi menu\n\nParameters:\n * None",
+        "notes" : [
+
+        ],
+        "signature" : "WiFun:refreshWiFi()",
+        "type" : "Method",
+        "returns" : [
+
+        ],
+        "desc" : "Refresh WiFi menu",
+        "parameters" : [
+          " * None"
+        ]
+      },
+      {
+        "def" : "WiFun:init()",
+        "stripped_doc" : [
+          "Initialize the WiFun module.",
+          ""
+        ],
+        "name" : "init",
+        "doc" : "Initialize the WiFun module.\n\nParameters:\n * None",
+        "notes" : [
+
+        ],
+        "signature" : "WiFun:init()",
+        "type" : "Method",
+        "returns" : [
+
+        ],
+        "desc" : "Initialize the WiFun module.",
+        "parameters" : [
+          " * None"
+        ]
+      }
+    ],
+    "Command" : [
+
+    ],
+    "Field" : [
+
+    ],
+    "doc" : "WiFi tools\n\nThis module provides a number of functions for working with WiFi networks.",
+    "name" : "WiFun"
+  }
+]

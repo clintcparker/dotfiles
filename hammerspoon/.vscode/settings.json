@@ -1,0 +1,11 @@
+{
+    "Lua.diagnostics.globals": [
+        "hs",
+        "muter",
+        "spoon",
+        "reloadConfig"
+    ],
+    "Lua.diagnostics.disable": [
+        "lowercase-global"
+    ]
+}
