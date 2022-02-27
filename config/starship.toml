@@ -1,0 +1,57 @@
+add_newline = false
+
+right_format = """
+$battery\
+$time"""
+
+
+[line_break] 
+disabled = true
+
+[character]
+success_symbol = "[➜](bold green) "
+error_symbol = "[✖](bold red) "
+
+[cmd_duration]
+min_time = 10
+show_notifications = true
+min_time_to_notify = 30_000
+
+[directory]
+fish_style_pwd_dir_length = 1
+disabled = false
+
+[directory.substitutions]
+"~/src" = "(~/src) github.com"
+
+[docker_context]
+symbol = "🐋 "
+disabled = false
+
+[gcloud]
+symbol = "G☁️ "
+
+[git_commit]
+only_detached = false
+
+[kubernetes]
+disabled = false
+symbol = "☸ "
+
+[terraform]
+format = "via [$symbol$workspace@$version]($style) "
+
+[time]
+disabled = false
+style = "bold yellow"
+format = "[$time]($style) "
+
+[battery]
+full_symbol = "🔋 "
+charging_symbol = "⚡️ "
+discharging_symbol = "💀 "
+
+[[battery.display]]
+threshold = 100
+discharging_symbol = " "
+style = "yellow"
