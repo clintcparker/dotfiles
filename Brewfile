@@ -31,6 +31,7 @@ brew "gettext"
 brew "chezmoi"
 brew "rcm"
 brew "starship"
+brew "thefuck"
 # 'brew install --with-rmtp', 'brew services restart' on version changes
 #brew "denji/nginx/nginx-full", args: ["with-rmtp"], restart_service: :changed
 # 'brew install', always 'brew services restart', 'brew link', 'brew unlink mysql' (if it is installed)
