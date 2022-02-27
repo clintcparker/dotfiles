@@ -125,7 +125,7 @@ setWifi()
 --#endregion Setup
 
 --#region finally
-local configNotify = hs.notify.new({title="Config",subTitle="loaded", informativeText=os.date("%I:%M %p"), autoWithdraw=false, alwaysPresent=true, withdrawAfter=0})
+local configNotify = hs.notify.new({title="Config",subTitle="loaded", informativeText=os.date("%I:%M %p"), autoWithdraw=true, alwaysPresent=true, withdrawAfter=10})
 configNotify:send()
 configLog.i("Config loaded");
 --#endregion finally
