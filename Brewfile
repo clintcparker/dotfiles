@@ -16,6 +16,7 @@ cask "microsoft-remote-desktop"
 cask "font-caskaydia-cove-nerd-font"
 cask "karabiner-elements"
 cask "cheatsheet"
+cask "monitorcontrol"
 # 'brew install --cask --appdir=~/my-apps/Applications'
 #cask "firefox", args: { appdir: "~/my-apps/Applications" }
 # always upgrade auto-updated or unversioned cask to latest version even if already installed
