@@ -1,6 +1,7 @@
 # 'brew tap'
 tap "homebrew/autoupdate"
 tap "homebrew/cask-fonts"
+tap "homebrew/cask-versions"
 # 'brew tap' with custom Git URL
 #tap "user/tap-repo", "https://user@bitbucket.org/user/homebrew-tap-repo.git"
 # set arguments for all 'brew install --cask' commands
