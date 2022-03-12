@@ -3,9 +3,9 @@ add_newline = false
 continuation_prompt = "▶▶"
 
 
-#right_format = """
-#$battery\
-#$time"""
+right_format = """
+$battery\
+$time"""
 
 
 [line_break] 
