@@ -1,8 +1,11 @@
 add_newline = false
 
-right_format = """
-$battery\
-$time"""
+continuation_prompt = "▶▶"
+
+
+#right_format = """
+#$battery\
+#$time"""
 
 
 [line_break] 
@@ -55,3 +58,5 @@ discharging_symbol = "💀 "
 threshold = 100
 discharging_symbol = " "
 style = "yellow"
+
+

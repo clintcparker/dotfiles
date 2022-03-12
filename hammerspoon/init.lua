@@ -12,6 +12,10 @@ local configLog = hs.logger.new("config", "info")
 --#endregion loggers
 
 --#region Spoons
+
+hs.loadSpoon("Zoom")
+hs.loadSpoon("LitraGlow")
+
 hs.loadSpoon("MMMute")
 local muter = spoon.MMMute
 muter:setDefaultVolume(75)
@@ -26,6 +30,7 @@ muter:bindHotkeys({toggle = {hyper, "M"}})
 
 --#region Watchers registration
 -- this pattern seems to be the safest way to register a watcher
+local camName = "USB2.0 FHD UVC WebCam"
 local usbw = hs.usb.watcher
 local pow = hs.caffeinate.watcher
 local config = hs.pathwatcher
@@ -43,6 +48,33 @@ local function setWifi()
         end
     end
     spoon.WiFun:reconnectWiFi()
+end
+
+
+
+local function on_cam(cam, prop, scope, element)
+    print("in camw")
+    print("cam:name():  "..cam:name().. "")
+    print("prop: "..prop.. "")
+    print("scope: "..scope.. "")
+    print("element: "..element.. "")
+end
+
+function startCamWatcher()
+    print("in startCamWatcher")
+    for i,cam in pairs(hs.camera.allCameras()) do
+        print(i, cam)
+        if cam:name() == camName then
+            configLog.i("found camera: " .. camName)
+            configLog.i("starting camera watcher")
+            cam:setPropertyWatcherCallback(on_cam):startPropertyWatcher()
+            break;
+        end
+    end
+end
+
+local function stopCamWatcher()
+    configLog.i("stopping camera watcher")
 end
 
 -- this method is stupid. Use hs.inspect.inspect(obj) instead
@@ -65,7 +97,15 @@ local function on_usb(data)
             -- hs.notify.show("Monitor", "disconnected", "");
         end
     end
+    -- if data.productName == camName then
+    --     if data.eventType == "added" then
+    --         startCamWatcher()
+    --     elseif data.eventType == "removed" then
+    --         stopCamWatcher()
+    --     end
+    -- end
 end
+
 
 local function on_pow(event)
     local name = "?"
@@ -99,9 +139,29 @@ function reloadConfig(files)
         hs.reload()
     end
 end
+
+zoomStatusMenuBarItem = hs.menubar.new(nil)
+zoomStatusMenuBarItem:setClickCallback(function()
+    spoon.Zoom:toggleMute()
+end)
+
+updateZoomStatus = function(event)
+--   hs.printf("updateZoomStatus(%s)", event)
+--   hs.http.get("")
+    if (event == "videoStarted" or event == "from-running-to-meeting") then
+        hs.urlevent.openURL("hammerspoon://lights?action=on")
+    end
+    if (event == "from-meeting-to-running" or event == "from-running-to-closed") then
+        hs.urlevent.openURL("hammerspoon://lights?action=off")
+    end
+end
 --#endregion Callbacks
 
 --#region Watchers start
+spoon.Zoom:setStatusCallback(updateZoomStatus)
+spoon.Zoom:pollStatus(1)
+spoon.Zoom:start()
+
 uw = usbw.new(on_usb)
 uw:start()
 configLog.i("USB events watcher started.")
@@ -113,6 +173,30 @@ configLog.i("Power events watcher started.")
 conw = config.new(os.getenv("HOME") .. "/.hammerspoon/", reloadConfig)
 conw:start()
 configLog.i("Config files watcher started.")
+
+hs.urlevent.bind("lights", function(eventName, params)
+    print(eventName)
+    print(params["action"])
+    if params["action"] == "on" then
+        spoon.LitraGlow:turnOn()
+        hs.timer.doAfter(1, function()    
+            spoon.LitraGlow:turnOn()
+        end)
+        hs.timer.doAfter(2, function()  
+            spoon.LitraGlow:turnOn()
+        end)
+    end
+    if params["action"] == "off" then
+        spoon.LitraGlow:turnOff()
+        hs.timer.doAfter(1, function()    
+            spoon.LitraGlow:turnOff()
+        end)
+        hs.timer.doAfter(2, function()  
+            spoon.LitraGlow:turnOff()
+        end)
+    end
+end)
+
 --#endregion Watchers start
 
 --#region Setup
@@ -129,4 +213,3 @@ local configNotify = hs.notify.new({title="Config",subTitle="loaded", informativ
 configNotify:send()
 configLog.i("Config loaded");
 --#endregion finally
-
