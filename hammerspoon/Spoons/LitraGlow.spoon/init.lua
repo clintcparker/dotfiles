@@ -14,6 +14,12 @@ obj.homepage = "https://clintparker.com"
 obj.license = "MIT - https://opensource.org/licenses/MIT"
 obj.logger = hs.logger.new(obj.name, "info")
 
+--- LitraGlow:turnOn()
+--- Method
+--- Turn on the LitraGlow
+---
+--- Parameters:
+---  * None
 function obj:turnOn()
     hs.execute(" ~/Source/hidapitester/hidapitester --vidpid 046D/C900 --open --length 20 --send-output 0x11,0xff,0x04,0x1c,0x01 \
     ~/Source/hidapitester/hidapitester --vidpid 046D/C900 --open --length 20 --send-output 0x11,0xff,0x04,0x1c,0x01  \
@@ -22,6 +28,12 @@ function obj:turnOn()
     ~/Source/hidapitester/hidapitester --vidpid 046D/C900 --open --length 20 --send-output 0x11,0xff,0x04,0x1c,0x01  ")
 end
 
+--- LitraGlow:turnOff()
+--- Method
+--- Turn off the LitraGlow
+---
+--- Parameters:
+---  * None
 function obj:turnOff()
     hs.execute("            ~/Source/hidapitester/hidapitester --vidpid 046D/C900 --open --length 20 --send-output 0x11,0xff,0x04,0x1c,0x00 \
     ~/Source/hidapitester/hidapitester --vidpid 046D/C900 --open --length 20 --send-output 0x11,0xff,0x04,0x1c,0x00 \
@@ -30,6 +42,12 @@ function obj:turnOff()
     ~/Source/hidapitester/hidapitester --vidpid 046D/C900 --open --length 20 --send-output 0x11,0xff,0x04,0x1c,0x00")
 end
 
+--- LitraGlow:init()
+--- Method
+--- Initialize the module
+---
+--- Parameters:
+---  * None
 function obj:init()
 
 end
