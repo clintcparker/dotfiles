@@ -1,0 +1,165 @@
+[
+  {
+    "Constant" : [
+
+    ],
+    "submodules" : [
+
+    ],
+    "Function" : [
+
+    ],
+    "Variable" : [
+
+    ],
+    "stripped_doc" : [
+
+    ],
+    "desc" : "LitraGlow Toggle and status indicator",
+    "Deprecated" : [
+
+    ],
+    "type" : "Module",
+    "Constructor" : [
+
+    ],
+    "doc" : "LitraGlow Toggle and status indicator \n\nThis module provides a number of functions for working with Logitech Litra Glow",
+    "Method" : [
+      {
+        "doc" : "Turn on the LitraGlow\n\nParameters:\n * None",
+        "stripped_doc" : [
+          "Turn on the LitraGlow",
+          ""
+        ],
+        "name" : "turnOn",
+        "def" : "LitraGlow:turnOn()",
+        "notes" : [
+
+        ],
+        "signature" : "LitraGlow:turnOn()",
+        "type" : "Method",
+        "returns" : [
+
+        ],
+        "desc" : "Turn on the LitraGlow",
+        "parameters" : [
+          " * None"
+        ]
+      },
+      {
+        "doc" : "Turn off the LitraGlow\n\nParameters:\n * None",
+        "stripped_doc" : [
+          "Turn off the LitraGlow",
+          ""
+        ],
+        "name" : "turnOff",
+        "def" : "LitraGlow:turnOff()",
+        "notes" : [
+
+        ],
+        "signature" : "LitraGlow:turnOff()",
+        "type" : "Method",
+        "returns" : [
+
+        ],
+        "desc" : "Turn off the LitraGlow",
+        "parameters" : [
+          " * None"
+        ]
+      },
+      {
+        "doc" : "Initialize the module\n\nParameters:\n * None",
+        "stripped_doc" : [
+          "Initialize the module",
+          ""
+        ],
+        "name" : "init",
+        "def" : "LitraGlow:init()",
+        "notes" : [
+
+        ],
+        "signature" : "LitraGlow:init()",
+        "type" : "Method",
+        "returns" : [
+
+        ],
+        "desc" : "Initialize the module",
+        "parameters" : [
+          " * None"
+        ]
+      }
+    ],
+    "Command" : [
+
+    ],
+    "items" : [
+      {
+        "doc" : "Initialize the module\n\nParameters:\n * None",
+        "stripped_doc" : [
+          "Initialize the module",
+          ""
+        ],
+        "name" : "init",
+        "def" : "LitraGlow:init()",
+        "notes" : [
+
+        ],
+        "signature" : "LitraGlow:init()",
+        "type" : "Method",
+        "returns" : [
+
+        ],
+        "desc" : "Initialize the module",
+        "parameters" : [
+          " * None"
+        ]
+      },
+      {
+        "doc" : "Turn off the LitraGlow\n\nParameters:\n * None",
+        "stripped_doc" : [
+          "Turn off the LitraGlow",
+          ""
+        ],
+        "name" : "turnOff",
+        "def" : "LitraGlow:turnOff()",
+        "notes" : [
+
+        ],
+        "signature" : "LitraGlow:turnOff()",
+        "type" : "Method",
+        "returns" : [
+
+        ],
+        "desc" : "Turn off the LitraGlow",
+        "parameters" : [
+          " * None"
+        ]
+      },
+      {
+        "doc" : "Turn on the LitraGlow\n\nParameters:\n * None",
+        "stripped_doc" : [
+          "Turn on the LitraGlow",
+          ""
+        ],
+        "name" : "turnOn",
+        "def" : "LitraGlow:turnOn()",
+        "notes" : [
+
+        ],
+        "signature" : "LitraGlow:turnOn()",
+        "type" : "Method",
+        "returns" : [
+
+        ],
+        "desc" : "Turn on the LitraGlow",
+        "parameters" : [
+          " * None"
+        ]
+      }
+    ],
+    "Field" : [
+
+    ],
+    "name" : "LitraGlow"
+  }
+]
