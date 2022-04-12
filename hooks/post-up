@@ -1,9 +1,4 @@
 #!/bin/sh
 
-if [ ! -e $HOME/.hidapi/hidapi/hidapi ]; then
-  git clone https://github.com/libusb/hidapi $HOME/.hidapi/hidapi
-fi
+chmod +x $HOME/.bin/hidapitester
 
-if [ ! -e $HOME/.hidapi/hidapi/hidapitester ]; then
-  git clone https://github.com/todbot/hidapitester $HOME/.hidapi/hidapitester
-fi
