@@ -21,11 +21,11 @@ obj.logger = hs.logger.new(obj.name, "info")
 --- Parameters:
 ---  * None
 function obj:turnOn()
-    hs.execute(" ~/Source/hidapitester/hidapitester --vidpid 046D/C900 --open --length 20 --send-output 0x11,0xff,0x04,0x1c,0x01 \
-    ~/Source/hidapitester/hidapitester --vidpid 046D/C900 --open --length 20 --send-output 0x11,0xff,0x04,0x1c,0x01  \
-    ~/Source/hidapitester/hidapitester --vidpid 046D/C900 --open --length 20 --send-output 0x11,0xff,0x04,0x1c,0x01  \
-    ~/Source/hidapitester/hidapitester --vidpid 046D/C900 --open --length 20 --send-output 0x11,0xff,0x04,0x1c,0x01  \
-    ~/Source/hidapitester/hidapitester --vidpid 046D/C900 --open --length 20 --send-output 0x11,0xff,0x04,0x1c,0x01  ")
+    hs.execute(" ~/.hidapi/hidapitester/hidapitester --vidpid 046D/C900 --open --length 20 --send-output 0x11,0xff,0x04,0x1c,0x01 \
+    ~/.hidapi/hidapitester/hidapitester --vidpid 046D/C900 --open --length 20 --send-output 0x11,0xff,0x04,0x1c,0x01  \
+    ~/.hidapi/hidapitester/hidapitester --vidpid 046D/C900 --open --length 20 --send-output 0x11,0xff,0x04,0x1c,0x01  \
+    ~/.hidapi/hidapitester/hidapitester --vidpid 046D/C900 --open --length 20 --send-output 0x11,0xff,0x04,0x1c,0x01  \
+    ~/.hidapi/hidapitester/hidapitester --vidpid 046D/C900 --open --length 20 --send-output 0x11,0xff,0x04,0x1c,0x01  ")
 end
 
 --- LitraGlow:turnOff()
@@ -35,11 +35,11 @@ end
 --- Parameters:
 ---  * None
 function obj:turnOff()
-    hs.execute("            ~/Source/hidapitester/hidapitester --vidpid 046D/C900 --open --length 20 --send-output 0x11,0xff,0x04,0x1c,0x00 \
-    ~/Source/hidapitester/hidapitester --vidpid 046D/C900 --open --length 20 --send-output 0x11,0xff,0x04,0x1c,0x00 \
-    ~/Source/hidapitester/hidapitester --vidpid 046D/C900 --open --length 20 --send-output 0x11,0xff,0x04,0x1c,0x00 \
-    ~/Source/hidapitester/hidapitester --vidpid 046D/C900 --open --length 20 --send-output 0x11,0xff,0x04,0x1c,0x00 \
-    ~/Source/hidapitester/hidapitester --vidpid 046D/C900 --open --length 20 --send-output 0x11,0xff,0x04,0x1c,0x00")
+    hs.execute("            ~/.hidapi/hidapitester/hidapitester --vidpid 046D/C900 --open --length 20 --send-output 0x11,0xff,0x04,0x1c,0x00 \
+    ~/.hidapi/hidapitester/hidapitester --vidpid 046D/C900 --open --length 20 --send-output 0x11,0xff,0x04,0x1c,0x00 \
+    ~/.hidapi/hidapitester/hidapitester --vidpid 046D/C900 --open --length 20 --send-output 0x11,0xff,0x04,0x1c,0x00 \
+    ~/.hidapi/hidapitester/hidapitester --vidpid 046D/C900 --open --length 20 --send-output 0x11,0xff,0x04,0x1c,0x00 \
+    ~/.hidapi/hidapitester/hidapitester --vidpid 046D/C900 --open --length 20 --send-output 0x11,0xff,0x04,0x1c,0x00")
 end
 
 --- LitraGlow:init()
