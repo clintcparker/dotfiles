@@ -5,3 +5,5 @@
 	email = clintcparker@gmail.com
 [core]
 	editor = nano
+[init]
+	defaultBranch = main
