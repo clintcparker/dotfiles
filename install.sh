@@ -17,7 +17,8 @@ chmod +x $HOME/.dotfiles/hooks/post-up
 
 for tool in `cat tool-versions | awk '{ print $1 }'`; do
     echo "adding plugin $tool"
-    asdf plugin add $tool
+    asdf plugin-add $tool
+    asdf plugin-update $tool
 done
 
 
@@ -35,3 +36,5 @@ asdf direnv setup --shell fish --version latest
 
 fish -c "fish_add_path ~/.bin"
 
+echo "Done!"
+echo "type 'fish' to start using fish"
