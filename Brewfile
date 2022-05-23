@@ -18,6 +18,7 @@ cask "font-caskaydia-cove-nerd-font"
 cask "karabiner-elements"
 cask "cheatsheet"
 cask "monitorcontrol"
+cask "stats"
 # 'brew install --cask --appdir=~/my-apps/Applications'
 #cask "firefox", args: { appdir: "~/my-apps/Applications" }
 # always upgrade auto-updated or unversioned cask to latest version even if already installed
@@ -30,7 +31,6 @@ brew "asdf"
 brew "cloudflare/cloudflare/cloudflared"
 brew "fish"
 brew "gettext"
-brew "chezmoi"
 brew "rcm"
 brew "starship"
 brew "thefuck"

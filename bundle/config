@@ -1,2 +1,3 @@
 ---
 BUNDLE_GEMFILE: "/Users/clint/.bundle/Gemfile"
+BUNDLE_GET: "gemfile"
