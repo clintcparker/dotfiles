@@ -1,40 +1,57 @@
-# 'brew tap'
+tap "cloudflare/cloudflare"
 tap "homebrew/autoupdate"
+tap "homebrew/bundle"
+tap "homebrew/cask"
 tap "homebrew/cask-fonts"
 tap "homebrew/cask-versions"
-# 'brew tap' with custom Git URL
-#tap "user/tap-repo", "https://user@bitbucket.org/user/homebrew-tap-repo.git"
-# set arguments for all 'brew install --cask' commands
-#cask_args appdir: "~/Applications", require_sha: true
-
-# 'brew install --cask'
-cask "visual-studio-code"
-cask "joplin"
-cask "microsoft-edge"
-cask "firefox"
-cask "hammerspoon"
-cask "microsoft-remote-desktop"
-cask "font-caskaydia-cove-nerd-font"
-cask "karabiner-elements"
-cask "cheatsheet"
-cask "monitorcontrol"
-cask "stats"
-# 'brew install --cask --appdir=~/my-apps/Applications'
-#cask "firefox", args: { appdir: "~/my-apps/Applications" }
-# always upgrade auto-updated or unversioned cask to latest version even if already installed
-#cask "opera", greedy: true
-# 'brew install --cask' only if '/usr/libexec/java_home --failfast' fails
-#cask "java" unless system "/usr/libexec/java_home --failfast"
-
-# 'brew install'
+tap "homebrew/core"
 brew "asdf"
-brew "cloudflare/cloudflare/cloudflared"
 brew "fish"
+brew "libx11"
+brew "openssl@3"
 brew "gettext"
+brew "gh"
+brew "mas"
+brew "sqlite"
+brew "python@3.10"
 brew "rcm"
 brew "starship"
+brew "tailscale"
 brew "thefuck"
-# 'brew install --with-rmtp', 'brew services restart' on version changes
-#brew "denji/nginx/nginx-full", args: ["with-rmtp"], restart_service: :changed
-# 'brew install', always 'brew services restart', 'brew link', 'brew unlink mysql' (if it is installed)
-#brew "mysql@5.6", restart_service: true, link: true, conflicts_with: ["mysql"]
+brew "wakeonlan"
+brew "cloudflare/cloudflare/cloudflared"
+cask "audacity"
+cask "cheatsheet"
+cask "divvy"
+cask "docker"
+cask "firefox"
+cask "font-caskaydia-cove-nerd-font"
+cask "hammerspoon"
+cask "joplin"
+cask "karabiner-elements"
+cask "microsoft-auto-update"
+cask "microsoft-edge"
+cask "microsoft-remote-desktop"
+cask "monitorcontrol"
+cask "mono-mdk-for-visual-studio"
+cask "nightfall"
+cask "onedrive"
+cask "powershell"
+cask "stats"
+cask "visual-studio"
+cask "visual-studio-code"
+cask "xamarin-mac"
+mas "Hand Mirror", id: 1502839586
+mas "Instapaper", id: 288545208
+mas "Instapaper Save", id: 1481302432
+mas "Kindle", id: 405399194
+mas "Microsoft Excel", id: 462058435
+mas "Microsoft OneNote", id: 784801555
+mas "Microsoft Outlook", id: 985367838
+mas "Microsoft PowerPoint", id: 462062816
+mas "Microsoft Word", id: 462054704
+mas "OneDrive", id: 823766827
+mas "Slack", id: 803453959
+mas "Tailscale", id: 1475387142
+mas "WireGuard", id: 1451685025
+mas "Xcode", id: 497799835
