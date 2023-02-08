@@ -14,6 +14,7 @@ obj.homepage = "https://clintparker.com"
 obj.license = "MIT - https://opensource.org/licenses/MIT"
 obj.logger = hs.logger.new(obj.name, "info")
 obj.loopcalls = 10
+obj.menu_title = "💡"
 
 --- LitraGlow:turnOn()
 --- Method
@@ -45,7 +46,7 @@ end
 
 function obj:showMenu()
     obj.logger.i("showMenu")
-    obj.menu:returnToMenuBar()
+    obj.menu:returnToMenuBar():setTitle(obj.menu_title)
 end
 
 
@@ -61,7 +62,7 @@ end
 ---  * None
 function obj:init()
     obj.menu = hs.menubar.new()
-    obj.menu:setTitle("💡")
+    obj.menu:setTitle(obj.menu_title)
     obj.menu:setTooltip("Litra-Glow")
     obj.menu:setMenu({
         {title = "On", fn = function()
