@@ -51,14 +51,14 @@ function obj:toggleMMMute()
 	if mic:muted()then
 		mic:setInputMuted(false)
 		local msg = "Unmuting " .. mic_name.. " input"
-		hs.alert(msg)
+		hs.alert.show(msg)
 		obj.logger.i(msg)
 		obj:unmuteZoom()
 	else
 		-- if not muted, then mute using input_vol
 		mic:setInputMuted(true)
 		local msg = "📵 Muting " .. mic_name.. " input 📵"
-		hs.alert(msg)
+		hs.alert.show(msg)
 		obj.logger.i(msg)
 		obj:muteZoom()
 	end

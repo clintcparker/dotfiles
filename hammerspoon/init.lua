@@ -16,6 +16,7 @@ local configLog = hs.logger.new("config", "info")
 hs.loadSpoon("Zoom")
 hs.loadSpoon("LitraGlow")
 
+
 hs.loadSpoon("MMMute")
 local muter = spoon.MMMute
 muter:setDefaultVolume(75)
@@ -43,7 +44,7 @@ local function setWifi()
     local usb = hs.usb.attachedDevices()
     for _,device in pairs(usb) do
         if device.productName == "USB 10/100/1000 LAN" then
-            spoon.WiFun:disconnectWiFi()
+            --spoon.WiFun:disconnectWiFi()
             return
         end
     end
@@ -86,24 +87,13 @@ end
 --#region Callbacks
 local function on_usb(data)
     configLog.i("USB Event " ..data.productName.. " " ..data.eventType.. "");
-    if data.productName == "USB 10/100/1000 LAN" then
+    if data.productName == "Litra Glow" then
         if data.eventType == "added" then
-            configLog.i("USB Event " ..data.productName.. " " ..data.eventType.. "");
-            spoon.WiFun:disconnectWiFi()
-            -- hs.notify.show("Monitor", "connected", "");
+            spoon.LitraGlow:showMenu();
         elseif data.eventType == "removed" then
-            configLog.i("USB Event " ..data.productName.. " " ..data.eventType.. "");
-            spoon.WiFun:reconnectWiFi()
-            -- hs.notify.show("Monitor", "disconnected", "");
+            spoon.LitraGlow:hideMenu();
         end
     end
-    -- if data.productName == camName then
-    --     if data.eventType == "added" then
-    --         startCamWatcher()
-    --     elseif data.eventType == "removed" then
-    --         stopCamWatcher()
-    --     end
-    -- end
 end
 
 
@@ -124,6 +114,7 @@ local function on_pow(event)
       or event == pow.screensaverDidStart
     then
       configLog.i("Screen locked.")
+      hs.urlevent.openURL("hammerspoon://lights?action=off")
       return
     end
 end
@@ -148,10 +139,11 @@ end)
 updateZoomStatus = function(event)
 --   hs.printf("updateZoomStatus(%s)", event)
 --   hs.http.get("")
-    if (event == "videoStarted" or event == "from-running-to-meeting") then
+    configLog.i("Zoom status: " .. event)
+    if (event == "videoStarted" or event == "from-meeting-to-running") then
         hs.urlevent.openURL("hammerspoon://lights?action=on")
     end
-    if (event == "from-meeting-to-running" or event == "from-running-to-closed") then
+    if (event == "videoStopped" or event == "off" or event == "from-running-to-meeting" or event == "from-running-to-closed") then
         hs.urlevent.openURL("hammerspoon://lights?action=off")
     end
 end
@@ -179,21 +171,9 @@ hs.urlevent.bind("lights", function(eventName, params)
     print(params["action"])
     if params["action"] == "on" then
         spoon.LitraGlow:turnOn()
-        hs.timer.doAfter(1, function()    
-            spoon.LitraGlow:turnOn()
-        end)
-        hs.timer.doAfter(2, function()  
-            spoon.LitraGlow:turnOn()
-        end)
     end
     if params["action"] == "off" then
         spoon.LitraGlow:turnOff()
-        hs.timer.doAfter(1, function()    
-            spoon.LitraGlow:turnOff()
-        end)
-        hs.timer.doAfter(2, function()  
-            spoon.LitraGlow:turnOff()
-        end)
     end
 end)
 
