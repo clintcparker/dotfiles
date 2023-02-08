@@ -5,3 +5,4 @@ dotnet-core 6.0.200
 nodejs 18.11.0
 python 3.10.4
 rust 1.60.0
+dotnet 7.0.100
