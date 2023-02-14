@@ -203,3 +203,11 @@ function obj:init()
 end
 
 return obj
+
+--#region example usage
+
+-- hs.loadSpoon("MMMute")
+-- local muter = spoon.MMMute
+-- muter:setDefaultVolume(75)
+
+--#endregion

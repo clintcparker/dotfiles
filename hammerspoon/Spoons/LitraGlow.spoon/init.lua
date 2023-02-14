@@ -15,6 +15,10 @@ obj.license = "MIT - https://opensource.org/licenses/MIT"
 obj.logger = hs.logger.new(obj.name, "info")
 obj.loopcalls = 10
 obj.menu_title = "💡"
+obj.usb_productName = "Litra Glow"
+
+
+
 
 --- LitraGlow:turnOn()
 --- Method
@@ -37,19 +41,42 @@ function obj:turnOff()
 end
 
 
-function obj:callLitra(arguments1)
-    obj.logger.i(arguments1)
+--- LitraGlow:callLitra()
+--- Method
+--- Call the LitraGlow with arbitrary arguments
+---
+--- Parameters:
+---  * arguments1 - string of arguments to pass to litra-glow
+--- 
+--- Returns:
+---  * None
+--- 
+--- Notes:
+---  * https://github.com/ucomesdag/litra-glow
+function obj:callLitra(arguments)
+    obj.logger.i(arguments)
     for i = 1, obj.loopcalls do
-        hs.execute("~/.bin/litra-glow " .. arguments1);
+        hs.execute("~/.bin/litra-glow " .. arguments);
     end
 end
 
+--- LitraGlow:showMenu()
+--- Method
+--- Show the menu
+---
+--- Parameters:
+---  * None
 function obj:showMenu()
     obj.logger.i("showMenu")
     obj.menu:returnToMenuBar():setTitle(obj.menu_title)
 end
 
-
+--- LitraGlow:hideMenu()
+--- Method
+--- Hide the menu
+---
+--- Parameters:
+---  * None
 function obj:hideMenu()
     obj.menu:removeFromMenuBar()
 end
@@ -62,7 +89,7 @@ end
 ---  * None
 function obj:init()
     obj.menu = hs.menubar.new()
-    obj.menu:setTitle(obj.menu_title)
+    -- obj.menu:setTitle(obj.menu_title)
     obj.menu:setTooltip("Litra-Glow")
     obj.menu:setMenu({
         {title = "On", fn = function()
@@ -115,8 +142,28 @@ function obj:init()
             end},
         }}
     })
+    
+
+    hs.urlevent.bind("lights", function(eventName, params)
+        -- print(eventName)
+        -- print(params["action"])
+        if params["action"] == "on" then
+            obj:turnOn()
+        end
+        if params["action"] == "off" then
+            obj:turnOff()
+        end
+    end)
+    obj:hideMenu();
+    for key,val in pairs(hs.usb.attachedDevices()) do 
+        if val.productName == obj.usb_productName then
+            obj:showMenu()
+        end
+    end
 end
 
 
 return obj
 
+
+-- hs.usb.attachedDevices()

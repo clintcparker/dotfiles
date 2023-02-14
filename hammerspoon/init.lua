@@ -3,89 +3,52 @@
 --#region requires
 -- these are nice to have loaded when generating docs. idk if there's an overhead cost
 require("hs.ipc")
+
+-- hs.ipc.cliInstall() requires write access to /usr/local/bin and /usr/local/share/man/man1 to install the command line client and man page. 
+-- If you've installed Homebrew in its traditional location, this should be taken care of for you; if you're using an M1 Mac, 
+-- and installed Homebrew in the recommended alternate location, then I think it's using /opt/homebrew instead... 
+-- you could try hs.ipc.cliInstall("/opt/homebrew") which will leverage the already writable 
+-- directories and path addition that Homebrew required.
+
+
 require("hs.doc")
 
 --#endregion requires
 
 --#region loggers
-local configLog = hs.logger.new("config", "info")
+configLog = hs.logger.new("config", "info")
 --#endregion loggers
 
 --#region Spoons
-
-hs.loadSpoon("Zoom")
+-- 
 hs.loadSpoon("LitraGlow")
 
 
-hs.loadSpoon("MMMute")
-local muter = spoon.MMMute
-muter:setDefaultVolume(75)
-
-hs.loadSpoon("WiFun")
 --#endregion Spoons
 
 --#region key bindings
 local hyper = {"shift", "cmd", "alt", "ctrl"}
-muter:bindHotkeys({toggle = {hyper, "M"}})
+-- muter:bindHotkeys({toggle = {hyper, "M"}})
 --#endregion key bindings
 
 --#region Watchers registration
 -- this pattern seems to be the safest way to register a watcher
-local camName = "USB2.0 FHD UVC WebCam"
 local usbw = hs.usb.watcher
 local pow = hs.caffeinate.watcher
 local config = hs.pathwatcher
 --#endregion Watchers registration
 
 --#region Utils
-local function setWifi()
-    -- is there a connected usb device named "USB 10/100/1000 LAN"
-    -- maybe this could be more clever based on network config?
-    local usb = hs.usb.attachedDevices()
-    for _,device in pairs(usb) do
-        if device.productName == "USB 10/100/1000 LAN" then
-            --spoon.WiFun:disconnectWiFi()
-            return
-        end
-    end
-    spoon.WiFun:reconnectWiFi()
-end
 
 
-
-local function on_cam(cam, prop, scope, element)
-    print("in camw")
-    print("cam:name():  "..cam:name().. "")
-    print("prop: "..prop.. "")
-    print("scope: "..scope.. "")
-    print("element: "..element.. "")
-end
-
-function startCamWatcher()
-    print("in startCamWatcher")
-    for i,cam in pairs(hs.camera.allCameras()) do
-        print(i, cam)
-        if cam:name() == camName then
-            configLog.i("found camera: " .. camName)
-            configLog.i("starting camera watcher")
-            cam:setPropertyWatcherCallback(on_cam):startPropertyWatcher()
-            break;
-        end
-    end
-end
-
-local function stopCamWatcher()
-    configLog.i("stopping camera watcher")
-end
-
--- this method is stupid. Use hs.inspect.inspect(obj) instead
+-- shorthand for hs.inspect.inspect(obj)
 function inspect(tbl)
     return hs.inspect.inspect(tbl)
 end
 --#endregion Utils
 
 --#region Callbacks
-local function on_usb(data)
+function on_usb(data)
     configLog.i("USB Event " ..data.productName.. " " ..data.eventType.. "");
     if data.productName == "Litra Glow" then
         if data.eventType == "added" then
@@ -97,22 +60,17 @@ local function on_usb(data)
 end
 
 
-local function on_pow(event)
+function on_pow(event)
     local name = "?"
     for key,val in pairs(pow) do
       if event == val then name = key end
     end
-    configLog.f("Power event %d => %s", event, name)
-    if event == pow.screensDidUnlock
-      or event == pow.screensaverDidStop
-    then
+    -- configLog.f("Power event %d => %s", event, name)
+    if event == pow.screensDidUnlock or event == pow.screensaverDidStop then
       configLog.i("Screen awakened!")
-      setWifi()
       return
     end
-    if event == pow.screensDidLock
-      or event == pow.screensaverDidStart
-    then
+    if event == pow.screensDidLock or event == pow.screensaverDidStart then
       configLog.i("Screen locked.")
       hs.urlevent.openURL("hammerspoon://lights?action=off")
       return
@@ -131,28 +89,10 @@ function reloadConfig(files)
     end
 end
 
-zoomStatusMenuBarItem = hs.menubar.new(nil)
-zoomStatusMenuBarItem:setClickCallback(function()
-    spoon.Zoom:toggleMute()
-end)
 
-updateZoomStatus = function(event)
---   hs.printf("updateZoomStatus(%s)", event)
---   hs.http.get("")
-    configLog.i("Zoom status: " .. event)
-    if (event == "videoStarted" or event == "from-meeting-to-running") then
-        hs.urlevent.openURL("hammerspoon://lights?action=on")
-    end
-    if (event == "videoStopped" or event == "off" or event == "from-running-to-meeting" or event == "from-running-to-closed") then
-        hs.urlevent.openURL("hammerspoon://lights?action=off")
-    end
-end
 --#endregion Callbacks
 
 --#region Watchers start
-spoon.Zoom:setStatusCallback(updateZoomStatus)
-spoon.Zoom:pollStatus(1)
-spoon.Zoom:start()
 
 uw = usbw.new(on_usb)
 uw:start()
@@ -166,16 +106,19 @@ conw = config.new(os.getenv("HOME") .. "/.hammerspoon/", reloadConfig)
 conw:start()
 configLog.i("Config files watcher started.")
 
-hs.urlevent.bind("lights", function(eventName, params)
-    print(eventName)
-    print(params["action"])
-    if params["action"] == "on" then
-        spoon.LitraGlow:turnOn()
-    end
-    if params["action"] == "off" then
-        spoon.LitraGlow:turnOff()
-    end
-end)
+-- startCamWatcher();
+local function cameraOn()
+    hs.urlevent.openURL("hammerspoon://lights?action=on")
+end
+
+local function cameraOff()
+    hs.urlevent.openURL("hammerspoon://lights?action=off")
+end
+
+local camcord = hs.loadSpoon("CamCord")
+camcord.visualIndicator = true
+local camWatcher = camcord:newWatcher(cameraOn, cameraOff)
+camWatcher:start()
 
 --#endregion Watchers start
 
@@ -185,11 +128,11 @@ end)
 hs.timer.doAt(0,hs.timer.hours(1), hs.reload):start()
 
 -- set wifi on startup
-setWifi()
+-- setWifi()
 --#endregion Setup
 
 --#region finally
-local configNotify = hs.notify.new({title="Config",subTitle="loaded", informativeText=os.date("%I:%M %p"), autoWithdraw=true, alwaysPresent=true, withdrawAfter=10})
+configNotify = hs.notify.new({title="Config",subTitle="loaded", informativeText=os.date("%I:%M %p"), autoWithdraw=true, alwaysPresent=true, withdrawAfter=10})
 configNotify:send()
 configLog.i("Config loaded");
 --#endregion finally
