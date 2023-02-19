@@ -36,5 +36,7 @@ asdf direnv setup --shell fish --version latest
 
 fish -c "fish_add_path ~/.bin"
 
+fish -c "fish_add_path ~/.dotnet/tools"
+
 echo "Done!"
 echo "type 'fish' to start using fish"

@@ -1,4 +1,4 @@
 #!/bin/sh
 
-chmod +x $HOME/.bin/hidapitester
-
+# mark everything in ~/.bin as executable
+chmod +x $HOME/.bin/*
