@@ -1,7 +1,9 @@
 # dotfiles
 
 ## Fresh Install
-`wget -qO- https://raw.githubusercontent.com/clintcparker/dotfiles/main/install.sh | bash`
+```
+wget -qO- https://raw.githubusercontent.com/clintcparker/dotfiles/main/install.sh | bash
+```
 
 ## Basic stuff for setting up a machine
 
