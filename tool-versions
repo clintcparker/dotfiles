@@ -1,8 +1,7 @@
 direnv 2.30.3
 git 2.35.1
 ruby 3.1.1
-dotnet-core 6.0.200
+dotnet-core 6.0.406
 nodejs 18.11.0
 python 3.10.4
 rust 1.60.0
-dotnet 7.0.200

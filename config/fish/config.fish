@@ -5,7 +5,11 @@ end
 if test -e /opt/homebrew/opt/asdf/libexec/asdf.fish                     
 	source /opt/homebrew/opt/asdf/libexec/asdf.fish
 else
-	source /usr/local/opt/asdf/libexec/asdf.fish
+	if test -e /usr/local/opt/asdf/libexec/asdf.fish
+		source /usr/local/opt/asdf/libexec/asdf.fish
+	else
+		source /home/linuxbrew/.linuxbrew/opt/asdf/libexec/asdf.fish
+	end
 end
 
 direnv hook fish | source
