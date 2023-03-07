@@ -16,6 +16,7 @@ fi
 
 brew install rcm
 brew install asdf
+brew install fish
 
 if [ ! -d "$HOME/.dotfiles" ]; then
     git clone https://github.com/clintcparker/dotfiles.git $HOME/.dotfiles
@@ -43,15 +44,15 @@ chsh -s `which fish`
 
 asdf direnv setup --shell fish --version latest
 
+cd $HOME
+brew bundle -v
+gem install bundler
+bundle install
+
+
 fish -c "fish_add_path ~/.bin"
 
 fish -c "fish_add_path ~/.dotnet/tools"
-
-cd $HOME
-fish -c "brew bundle -v" 
-fish -c "gem install bundler"
-fish - c "bundle install"
-
 
 echo "Done!"
 echo "type 'fish' to start using fish"
