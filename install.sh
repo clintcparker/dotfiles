@@ -6,6 +6,14 @@ then
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
+# if /home/linuxbrew/.linuxbrew/bin/brew exists, then we are on linux
+if [ -f "/home/linuxbrew/.linuxbrew/bin/brew" ]; then
+    echo "linux detected, installing linuxbrew"
+    (echo; echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"') >> $HOME/.profile
+    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+    sudo apt-get install build-essential
+fi
+
 brew install rcm
 brew install asdf
 
@@ -14,6 +22,8 @@ if [ ! -d "$HOME/.dotfiles" ]; then
     git -C $HOME/.dotfiles remote set-url --push origin git@github.com:clintcparker/dotfiles.git
 fi
 chmod +x $HOME/.dotfiles/hooks/post-up
+
+cd $HOME/.dotfiles
 
 for tool in `cat tool-versions | awk '{ print $1 }'`; do
     echo "adding plugin $tool"
@@ -25,10 +35,9 @@ done
 rcup
 
 cd $HOME
+
 asdf install 
-brew bundle -v 
-gem install bundler
-bundle install
+
 
 chsh -s `which fish`
 
@@ -38,5 +47,12 @@ fish -c "fish_add_path ~/.bin"
 
 fish -c "fish_add_path ~/.dotnet/tools"
 
+cd $HOME
+fish -c "brew bundle -v" 
+fish -c "gem install bundler"
+fish - c "bundle install"
+
+
 echo "Done!"
 echo "type 'fish' to start using fish"
+fish
