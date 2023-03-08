@@ -37,7 +37,7 @@ echo "fish installed!"
 brew install rcm
 
 if [ ! -d "$HOME/.dotfiles" ]; then
-    git clone -b 3-7-23 https://github.com/clintcparker/dotfiles.git $HOME/.dotfiles
+    git clone https://github.com/clintcparker/dotfiles.git $HOME/.dotfiles
     git -C $HOME/.dotfiles remote set-url --push origin git@github.com:clintcparker/dotfiles.git
 fi
 chmod +x $HOME/.dotfiles/hooks/post-up
@@ -85,5 +85,6 @@ else
 fi
 
 echo "Done!"
+echo "run 'brew bundle --global' to install global brew packages"
 #  echo "type 'fish' to start using fish"
 fish
