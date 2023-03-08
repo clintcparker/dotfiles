@@ -1,4 +1,7 @@
 #!/bin/sh
 
+echo "running rcm post-up hook"
+
 # mark everything in ~/.bin as executable
 chmod +x $HOME/.bin/*
+

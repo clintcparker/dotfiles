@@ -2,7 +2,7 @@
 
 ## Fresh Install
 ```
-wget -qO- https://raw.githubusercontent.com/clintcparker/dotfiles/main/install.sh | bash
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/clintcparker/dotfiles/main/install.sh)"
 ```
 
 ## Basic stuff for setting up a machine
