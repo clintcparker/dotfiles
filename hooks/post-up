@@ -1,4 +1,17 @@
 #!/bin/sh
 
+echo "running rcm post-up hook"
+
 # mark everything in ~/.bin as executable
-chmod +x $HOME/.bin/*
+# chmod +x $HOME/.bin/*
+
+# brew install asdf
+
+# asdf plugin add ruby
+# asdf install ruby 3.0.1
+
+# brew bundle --global
+# gem install bundler
+# bundle install --path $HOME/.bundle
+
+# asdf direnv setup --shell fish --version latest
