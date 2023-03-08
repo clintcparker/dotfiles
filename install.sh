@@ -33,18 +33,22 @@ for tool in `cat tool-versions | awk '{ print $1 }'`; do
 done
 
 
+
 cd $HOME
 echo "now in:"
 pwd
 rcup
 
-echo "brew bundle --global"
-brew bundle --global
-
 
 echo "brew bundle --global"
 brew bundle --global
 
+
+echo "brew bundle --global"
+brew bundle --global
+
+
+asdf install
 
 chsh -s `which fish`
 
