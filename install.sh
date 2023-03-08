@@ -15,8 +15,8 @@ if [ -f "/home/linuxbrew/.linuxbrew/bin/brew" ]; then
 fi
 
 brew install rcm
-brew install asdf
-brew install fish
+# brew install asdf
+# brew install fish
 
 if [ ! -d "$HOME/.dotfiles" ]; then
     git clone https://github.com/clintcparker/dotfiles.git $HOME/.dotfiles
@@ -24,27 +24,32 @@ if [ ! -d "$HOME/.dotfiles" ]; then
 fi
 chmod +x $HOME/.dotfiles/hooks/post-up
 
-cd $HOME/.dotfiles
+# cd $HOME/.dotfiles
 
-for tool in `cat tool-versions | awk '{ print $1 }'`; do
-    echo "adding plugin $tool"
-    asdf plugin-add $tool
-    asdf plugin-update $tool
-done
+# for tool in `cat tool-versions | awk '{ print $1 }'`; do
+#     echo "adding plugin $tool"
+#     asdf plugin-add $tool
+#     asdf plugin-update $tool
+# done
 
 
 rcup
 
 cd $HOME
-
-asdf install 
-
-
-chsh -s `which fish`
-
-asdf direnv setup --shell fish --version latest
-
+echo "brew bundle --global"
 brew bundle --global
+
+
+echo "brew bundle --global"
+brew bundle --global
+
+# asdf install 
+
+
+# chsh -s `which fish`
+
+# asdf direnv setup --shell fish --version latest
+
 /bin/bash -c brew bundle --global
 /bin/bash -c gem install bundler
 /bin/bash bundle install
