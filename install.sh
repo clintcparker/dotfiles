@@ -14,10 +14,11 @@ fi
 # if /home/linuxbrew/.linuxbrew/bin/brew exists, then we are on linux
 if [ -f "/home/linuxbrew/.linuxbrew/bin/brew" ]; then
     echo "linux detected, configuring linuxbrew"
+    sudo apt update
     (echo; echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"') >> $HOME/.profile
     eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-    brew install gcc
     sudo apt-get install build-essential --fix-missing
+    brew reinstall gcc
 fi
 
 echo "Homebrew installed!"
@@ -52,8 +53,6 @@ brew install asdf
 
 asdf plugin add direnv
 asdf install direnv 2.30.3
-asdf plugin add ruby
-asdf install ruby 3.0.1
 asdf plugin add rust
 asdf install rust 1.60.0
 
@@ -61,7 +60,11 @@ brew install starship
 brew install thefuck
 
 # brew bundle --global
-gem install bundler
+
+
+# asdf plugin add ruby
+# asdf install ruby 3.0.1
+# gem install bundler
 # bundle install --path $HOME/.bundle
 
 asdf direnv setup --shell fish --version latest
