@@ -44,10 +44,10 @@ chsh -s `which fish`
 
 asdf direnv setup --shell fish --version latest
 
-cd $HOME
-brew bundle -v
-gem install bundler
-bundle install
+brew bundle --global
+/bin/bash -c brew bundle --global
+/bin/bash -c gem install bundler
+/bin/bash bundle install
 
 
 fish -c "fish_add_path ~/.bin"
