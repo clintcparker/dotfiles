@@ -21,6 +21,12 @@ if [ -f "/home/linuxbrew/.linuxbrew/bin/brew" ]; then
     brew reinstall gcc
 fi
 
+# if /opt/homebrew/bin/brew exists, then we are on mac silicon
+if [ -f "/opt/homebrew/bin/brew" ]; then
+    (echo; echo 'eval "$(/opt/homebrew/bin/brew shellenv)"') >> $HOME/.profile
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
+
 echo "Homebrew installed!"
 
 # Install fish
@@ -28,8 +34,8 @@ brew install fish
 # add fish to /etc/shells
 which fish | sudo tee -a /etc/shells
 chsh -s `which fish`
-fish -c "fish_add_path ~/.bin"
-fish -c "fish_add_path ~/.dotnet/tools"
+fish -c "fish_add_path -P ~/.bin"
+fish -c "fish_add_path -P ~/.dotnet/tools"
 
 echo "fish installed!"
 
