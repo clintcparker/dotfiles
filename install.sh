@@ -24,6 +24,7 @@ fi
 # if /opt/homebrew/bin/brew exists, then we are on mac silicon
 if [ -f "/opt/homebrew/bin/brew" ]; then
     (echo; echo 'eval "$(/opt/homebrew/bin/brew shellenv)"') >> $HOME/.profile
+    (echo; echo 'eval "$(/opt/homebrew/bin/brew shellenv)"') >> $HOME/.zprofile
     eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
