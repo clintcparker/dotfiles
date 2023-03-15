@@ -84,6 +84,8 @@ else
     echo "Completed in $duration seconds"
 fi
 
+fish -c "brew shellenv"
+
 echo "Done!"
 echo "run 'brew bundle --global' to install global brew packages"
 #  echo "type 'fish' to start using fish"
