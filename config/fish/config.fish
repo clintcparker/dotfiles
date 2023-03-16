@@ -19,6 +19,8 @@ set -g direnv_fish_mode eval_on_arrow
 starship init fish | source
 thefuck --alias | source 
 
+asdf_update_dotnet_home          
+
 alias ss1-up='ssh  -fNTM ss1'
 alias ss1-status='ssh -TO check ss1'
 alias ss1-down='ssh -TO exit ss1'
