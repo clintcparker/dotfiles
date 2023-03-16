@@ -35,8 +35,8 @@ brew install fish
 # add fish to /etc/shells
 which fish | sudo tee -a /etc/shells
 chsh -s `which fish`
-fish -c "fish_add_path -P ~/.bin"
-fish -c "fish_add_path -P ~/.dotnet/tools"
+fish -c "fish_add_path -U ~/.bin"
+fish -c "fish_add_path -U ~/.dotnet/tools"
 
 echo "fish installed!"
 
@@ -91,7 +91,7 @@ else
     echo "Completed in $duration seconds"
 fi
 
-fish -c "brew shellenv"
+brew shellenv | fish
 
 echo "Done!"
 echo "run 'brew bundle --global' to install global brew packages"
