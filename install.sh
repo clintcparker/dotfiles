@@ -8,18 +8,10 @@ start=$SECONDS
 if ! command -v brew &> /dev/null
 then
     echo "homebrew could not be found, installing"
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
-# if /home/linuxbrew/.linuxbrew/bin/brew exists, then we are on linux
-if [ -f "/home/linuxbrew/.linuxbrew/bin/brew" ]; then
-    echo "linux detected, configuring linuxbrew"
-    sudo apt update
-    (echo; echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"') >> $HOME/.profile
-    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-    sudo apt-get install build-essential --fix-missing
-    brew reinstall gcc
-fi
+installEnv=macarm
 
 # if /opt/homebrew/bin/brew exists, then we are on mac silicon
 if [ -f "/opt/homebrew/bin/brew" ]; then
@@ -28,6 +20,30 @@ if [ -f "/opt/homebrew/bin/brew" ]; then
     eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
+# if /usr/local/bin/brew exists, then we are on intel
+if [ -f "/usr/local/bin/brew" ]; then
+    installEnv=macintel
+    (echo; echo 'eval "$(/usr/local/bin/brew shellenv)"') >> $HOME/.profile
+    (echo; echo 'eval "$(/usr/local/bin/brew shellenv)"') >> $HOME/.zprofile
+    eval "$(/usr/local/bin/brew shellenv)"
+fi
+
+# if /home/linuxbrew/.linuxbrew/bin/brew exists, then we are on linux
+if [ -f "/home/linuxbrew/.linuxbrew/bin/brew" ]; then
+    installEnv=linux
+    echo "linux detected, configuring linuxbrew"
+    sudo apt update
+    (echo; echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"') >> $HOME/.profile
+    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+    sudo apt-get install build-essential --fix-missing
+    brew reinstall gcc
+fi
+
+
+
+brewpath=$(dirname $(which brew))
+
+
 echo "Homebrew installed!"
 
 # Install fish
@@ -35,10 +51,7 @@ brew install fish
 # add fish to /etc/shells
 which fish | sudo tee -a /etc/shells
 chsh -s `which fish`
-fish -c "fish_add_path -U ~/.bin"
-fish -c "fish_add_path -U ~/.dotnet/tools"
 
-echo "fish installed!"
 
 # Install rcm
 brew install rcm
@@ -91,9 +104,16 @@ else
     echo "Completed in $duration seconds"
 fi
 
-brew shellenv | fish
+
+#if not on linux, then setup the mac
+if [ "$installEnv" != "linux" ]; then
+    fish ~/.dotfiles/macos.fish
+fi
+
 
 echo "Done!"
 echo "run 'brew bundle --global' to install global brew packages"
+
+
 #  echo "type 'fish' to start using fish"
 fish
