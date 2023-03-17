@@ -69,15 +69,21 @@ echo "now in:"
 pwd
 rcup
 
+# Install asdf and asdf-direnv
 brew install asdf
-
 asdf plugin add direnv
-asdf install direnv 2.30.3
-asdf plugin add rust
-asdf install rust 1.60.0
+asdf install direnv
+asdf direnv setup --shell fish --version latest
 
+# install shell dependencies
+asdf plugin add rust
+asdf install rust
+
+# setup the shell & prompt
 brew install starship
 brew install thefuck
+
+
 
 # brew bundle --global
 
@@ -87,7 +93,6 @@ brew install thefuck
 # gem install bundler
 # bundle install --path $HOME/.bundle
 
-asdf direnv setup --shell fish --version latest
 
 #end timer
 duration=$(( SECONDS - start ))

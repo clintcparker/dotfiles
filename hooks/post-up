@@ -2,6 +2,15 @@
 
 echo "running rcm post-up hook"
 
+echo "running rcm post-up hook: fish"
+git -C $HOME/.dotfiles/config/fish/functions submodule update --init --recursive
+fish -c "fish $HOME/.config/fish/functions/install"
+
+echo "completed rcm post-up hook: fish"
+
+
+
 # mark everything in ~/.bin as executable
 chmod +x $HOME/.bin/*
 
+echo "completed rcm post-up hook"

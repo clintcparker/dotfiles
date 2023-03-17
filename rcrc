@@ -1,3 +1,2 @@
 EXCLUDES="README.md LICENSE install.sh .gitignore"
 SYMLINK_DIRS=".hammerspoon .config/fish/functions"
-UNDOTTED="Brewfile"
