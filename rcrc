@@ -1,2 +1,2 @@
-EXCLUDES="README.md LICENSE install.sh .gitignore"
+EXCLUDES="README.md LICENSE install.sh .gitignore macos.fish"
 SYMLINK_DIRS=".hammerspoon .config/fish/functions"
