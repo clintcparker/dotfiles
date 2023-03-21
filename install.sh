@@ -3,6 +3,18 @@
 #start timer
 start=$SECONDS
 
+echo "running install script 
+     this will... 
+       - install homebrew
+       - install fish
+            - set fish as default shell  
+       - install rcm  
+            - run rcup
+       - install asdf  
+           - and direnv  
+       - install starship
+       - install macos terminals"
+
 
 # Install Homebrew
 if ! command -v brew &> /dev/null
@@ -75,13 +87,8 @@ asdf plugin add direnv
 asdf install direnv
 asdf direnv setup --shell fish --version latest
 
-# install shell dependencies
-asdf plugin add rust
-asdf install rust
-
 # setup the shell & prompt
 brew install starship
-brew install thefuck
 
 
 
@@ -92,6 +99,12 @@ brew install thefuck
 # asdf install ruby 3.0.1
 # gem install bundler
 # bundle install --path $HOME/.bundle
+
+
+#if not on linux, then setup the mac
+if [ "$installEnv" != "linux" ]; then
+    fish ~/.dotfiles/macos.fish
+fi
 
 
 #end timer
@@ -110,14 +123,9 @@ else
 fi
 
 
-#if not on linux, then setup the mac
-if [ "$installEnv" != "linux" ]; then
-    fish ~/.dotfiles/macos.fish
-fi
-
 
 echo "Done!"
-echo "run 'brew bundle --global' to install global brew packages"
+echo "run 'update --all' to install all the things"
 
 
 #  echo "type 'fish' to start using fish"
