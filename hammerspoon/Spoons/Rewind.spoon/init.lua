@@ -13,7 +13,7 @@ obj.author = "clintcparker <clintcparker@gmail.com>"
 obj.homepage = "https://clintparker.com"
 obj.license = "MIT - https://opensource.org/licenses/MIT"
 obj.logger = hs.logger.new(obj.name, "info")
-obj.loopcalls = 4
+obj.loopcalls = 3
 
 
 

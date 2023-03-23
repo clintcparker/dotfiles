@@ -22,6 +22,7 @@ configLog = hs.logger.new("config", "info")
 --#region Spoons
 -- 
 hs.loadSpoon("LitraGlow")
+hs.loadSpoon("Rewind")
 
 
 --#endregion Spoons
