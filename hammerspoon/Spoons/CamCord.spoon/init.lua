@@ -101,7 +101,8 @@ function obj:newWatcher(cameraOn, cameraOff)
             -- print(i, cam)
             -- if cam:name() == camName then
             obj.logger.i("starting camera watcher for " .. cam:name() .. "")
-                cam:setPropertyWatcherCallback(on_cam_inner):startPropertyWatcher()
+            cam:setPropertyWatcherCallback(on_cam_inner):startPropertyWatcher()
+            on_cam_inner(cam)
                 -- cam:setWatcherCallback(on_cam2):startWatcher()
                 -- break;
             -- end
