@@ -90,41 +90,13 @@ function reloadConfig(files)
 end
 
 function pauseRewindAudio()
-    hs.osascript.applescript([[
-        tell application "System Events"
-            tell application process "Dock"
-                tell list 1
-                    tell UI element "Rewind"
-                        perform action "AXShowMenu"
-                        tell menu "Rewind"
-                            tell menu item "Pause Microphone Capture"
-                                perform action "AXPress"
-                            end tell
-                        end tell
-                    end tell
-                end tell
-            end tell
-        end tell
-    ]])
+    configLog.i("pausing rewind audio")
+    
 end
 
 function resumeRewindAudio()
-    hs.osascript.applescript([[
-        tell application "System Events"
-            tell application process "Dock"
-                tell list 1
-                    tell UI element "Rewind"
-                        perform action "AXShowMenu"
-                        tell menu "Rewind"
-                            tell menu item "Resume Microphone Capture"
-                                perform action "AXPress"
-                            end tell
-                        end tell
-                    end tell
-                end tell
-            end tell
-        end tell
-    ]])
+    configLog.i("resuming rewind audio")
+    
 end
 
 
@@ -147,12 +119,12 @@ configLog.i("Config files watcher started.")
 -- startCamWatcher();
 local function cameraOn()
     hs.urlevent.openURL("hammerspoon://lights?action=on")
-    resumeRewindAudio()
+    hs.urlevent.openURL("hammerspoon://rewind?action=on")
 end
 
 local function cameraOff()
     hs.urlevent.openURL("hammerspoon://lights?action=off")
-    pauseRewindAudio()
+    hs.urlevent.openURL("hammerspoon://rewind?action=off")
 end
 
 local camcord = hs.loadSpoon("CamCord")

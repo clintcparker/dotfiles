@@ -1,0 +1,20 @@
+#!/usr/bin/osascript
+# click the icon for the application called "Rewind" in the dock and click the menu item called "Pause Microphone Capture"
+tell application "System Events"
+    tell application process "Dock"
+        tell list 1
+            tell UI element "Rewind"
+                try
+                    perform action "AXShowMenu"
+                    tell menu "Rewind"
+                        tell menu item "Pause Microphone Capture"
+                            perform action "AXPress"
+                        end tell
+                    end tell
+                on error
+                    tell application "System Events" to keystroke space
+                end
+            end tell
+        end tell
+    end tell
+end tell
