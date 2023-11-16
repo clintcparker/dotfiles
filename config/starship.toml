@@ -17,7 +17,7 @@ error_symbol = "[✖](bold red) "
 
 [cmd_duration]
 min_time = 10
-show_notifications = true
+show_notifications = false
 min_time_to_notify = 30_000
 
 [directory]
@@ -58,3 +58,8 @@ discharging_symbol = "💀 "
 threshold = 100
 discharging_symbol = " "
 style = "yellow"
+
+[custom.ssh]
+command = 'echo foo' # shows output of command
+when = ''' ssh -TO check cs '''
+format = '🔛'
