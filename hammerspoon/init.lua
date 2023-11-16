@@ -33,10 +33,23 @@ local hyper = {"shift", "cmd", "alt", "ctrl"}
 --#endregion key bindings
 
 --#region Watchers registration
+
+local function cameraOn()
+    hs.urlevent.openURL("hammerspoon://lights?action=on")
+    hs.urlevent.openURL("hammerspoon://rewind?action=on")
+end
+
+local function cameraOff()
+    hs.urlevent.openURL("hammerspoon://lights?action=off")
+    hs.urlevent.openURL("hammerspoon://rewind?action=off")
+end
 -- this pattern seems to be the safest way to register a watcher
 local usbw = hs.usb.watcher
 local pow = hs.caffeinate.watcher
 local config = hs.pathwatcher
+local camcord = hs.loadSpoon("CamCord")
+camcord.visualIndicator = true
+local camWatcher = camcord:newWatcher(cameraOn, cameraOff)
 --#endregion Watchers registration
 
 --#region Utils
@@ -68,7 +81,8 @@ function on_pow(event)
     end
     -- configLog.f("Power event %d => %s", event, name)
     if event == pow.screensDidUnlock or event == pow.screensaverDidStop then
-      configLog.i("Screen awakened!")
+      configLog.i("Screen awakened!");
+      hs.urlevent.openURL("hammerspoon://config?action=cycleCamWatcher");
       return
     end
     if event == pow.screensDidLock or event == pow.screensaverDidStart then
@@ -100,6 +114,11 @@ function resumeRewindAudio()
     
 end
 
+function cycleCamWatcher()
+    camWatcher:stop();
+    camWatcher:start();
+end
+
 
 --#endregion Callbacks
 
@@ -118,22 +137,24 @@ conw:start()
 configLog.i("Config files watcher started.")
 
 -- startCamWatcher();
-local function cameraOn()
-    hs.urlevent.openURL("hammerspoon://lights?action=on")
-    hs.urlevent.openURL("hammerspoon://rewind?action=on")
-end
 
-local function cameraOff()
-    hs.urlevent.openURL("hammerspoon://lights?action=off")
-    hs.urlevent.openURL("hammerspoon://rewind?action=off")
-end
-
-local camcord = hs.loadSpoon("CamCord")
-camcord.visualIndicator = true
-local camWatcher = camcord:newWatcher(cameraOn, cameraOff)
 camWatcher:start()
 
+
+
+
+
 --#endregion Watchers start
+
+--#region general listeners
+hs.urlevent.bind("config", function(eventName, params)
+    -- print(eventName)
+    configLog.i("URL event " ..eventName.. " " ..inspect(params).. "");
+    if params["action"] == "cycleCamWatcher" then
+        cycleCamWatcher();
+    end
+end)
+
 
 --#region Setup
 

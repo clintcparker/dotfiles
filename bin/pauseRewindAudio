@@ -7,12 +7,13 @@ tell application "System Events"
                 try
                     perform action "AXShowMenu"
                     tell menu "Rewind"
-                        tell menu item "Pause Microphone Capture"
+                        tell menu item "Pause Audio Capture"
                             perform action "AXPress"
                         end tell
+                        tell application "System Events" to key code 53
                     end tell
                 on error
-                    tell application "System Events" to keystroke space
+                    tell application "System Events" to key code 53
                 end
             end tell
         end tell

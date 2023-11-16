@@ -1,7 +1,6 @@
-direnv 2.32.2
-git 2.40.0
-ruby 3.2.1
-nodejs 19.8.1
-python 3.11.2
-rust 1.68.0
-dotnet 7.0.202
+direnv 2.32.3
+git 2.42.0
+ruby 3.2.2
+nodejs 20.8.1
+python 3.12.0
+rust 1.73.0

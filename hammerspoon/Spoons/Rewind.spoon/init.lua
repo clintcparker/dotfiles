@@ -1,8 +1,8 @@
---- === LitraGlow ===
+--- === Rewind ===
 ---
---- LitraGlow Toggle and status indicator 
+--- Rewind Audio Toggle
 ---
---- This module provides a number of functions for working with Logitech Litra Glow
+--- This module provides a number of functions for working with Rewind
 local obj={}
 obj.__index = obj
 
@@ -13,7 +13,7 @@ obj.author = "clintcparker <clintcparker@gmail.com>"
 obj.homepage = "https://clintparker.com"
 obj.license = "MIT - https://opensource.org/licenses/MIT"
 obj.logger = hs.logger.new(obj.name, "info")
-obj.loopcalls = 3
+obj.loopcalls = 1
 
 
 
@@ -52,7 +52,7 @@ end
 ---  * None
 function obj:init()
     hs.urlevent.bind("rewind", function(eventName, params)
-        -- print(eventName)
+        print(eventName)
         -- print(params["action"])
         if params["action"] == "on" then
             obj:turnOn()

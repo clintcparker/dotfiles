@@ -7,7 +7,7 @@ tell application "System Events"
                 try
                     perform action "AXShowMenu"
                     tell menu "Rewind"
-                        tell menu item "Resume Microphone Capture"
+                        tell menu item "Resume Audio Capture"
                             perform action "AXPress"
                         end tell
                     end tell

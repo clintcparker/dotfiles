@@ -1,0 +1,20 @@
+#!/usr/bin/osascript
+# click the icon for the application called "Rewind" in the dock and get the menu items
+tell application "System Events"
+	tell application process "Dock"
+		tell list 1
+			tell UI element "Rewind"
+				try
+					perform action "AXShowMenu"
+					tell menu "Rewind"
+						set menunames to get name of every menu item
+					end tell
+					tell application "System Events" to key code 53
+				on error
+					tell application "System Events" to key code 53
+				end try
+			end tell
+		end tell
+	end tell
+end tell
+menunames

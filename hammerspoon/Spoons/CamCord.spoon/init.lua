@@ -102,10 +102,14 @@ function obj:newWatcher(cameraOn, cameraOff)
             -- if cam:name() == camName then
             obj.logger.i("starting camera watcher for " .. cam:name() .. "")
             cam:setPropertyWatcherCallback(on_cam_inner):startPropertyWatcher()
-            on_cam_inner(cam)
+            if(cam:isInUse()) then
+                if (obj.visualIndicator) then
+                    showRedDot(cam)
+                end
+                watcher.cameraOnCallback()
                 -- cam:setWatcherCallback(on_cam2):startWatcher()
                 -- break;
-            -- end
+            end
         end
     end
 
@@ -113,8 +117,8 @@ function obj:newWatcher(cameraOn, cameraOff)
         for i,cam in pairs(hs.camera.allCameras()) do
             -- print(i, cam)
             -- if cam:name() == camName then
-            obj.logger.i("starting camera watcher for " .. cam:name() .. "")
-                cam:setPropertyWatcherCallback():stopPropertyWatcher()
+            obj.logger.i("stopping camera watcher for " .. cam:name() .. "")
+                cam:stopPropertyWatcher()
                 -- cam:setWatcherCallback(on_cam2):startWatcher()
                 -- break;
             -- end
