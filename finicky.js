@@ -2,7 +2,7 @@
 // Save as ~/.finicky.js
 // Docs: https://github.com/johnste/finicky/wiki/Configuration
 module.exports = {
-    defaultBrowser: "Microsoft Edge",      
+    defaultBrowser: "Firefox",      
     handlers: [
       {
         match: /^https?:\/\/meet\.google\.com\/.*$/,
@@ -22,9 +22,12 @@ module.exports = {
       {
         match: ({opener}) => ["FMail2", "Messages", "OneDrive"].includes(opener.name),
         browser: {
-          name: "Microsoft Edge",
-          profile: "Default"
+          name: "Firefox",
         }
+        // browser: {
+        //   name: "Microsoft Edge",
+        //   profile: "Default"
+        // }
       },
       { //edge is being real dumb w/ msft sites
         match: /^https?:\/\/.*\.microsoft\.com\/.*$/,
