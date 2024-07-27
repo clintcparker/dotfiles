@@ -3,17 +3,31 @@
 // Docs: https://github.com/johnste/finicky/wiki/Configuration
 module.exports = {
     defaultBrowser: "Firefox",      
+    // defaultBrowser: "Microsoft Edge",      
     handlers: [
       {
-        match: /^https?:\/\/meet\.google\.com\/.*$/,
-        browser: "Google Meet"
+        // match: /^https?:\/\/meet\.google\.com.*$/,
+        match: ({url, urlString}) =>{
+          finicky.log(url.host);
+          return url.host === "meet.google.com";
+        }
+        ,browser: "Google Meet"
+      },
+      {
+        // match: /^https?:\/\/meet\.google\.com.*$/,
+        match: ({url, opener}) =>{
+          ["Gmail","Google Calendar","Google Meet","Slack","Limitless"].includes(opener.name)
+          finicky.log(url.host);
+          return url.host === "meet.google.com" && ["Gmail","Google Calendar","Google Meet","Slack","Limitless"].includes(opener.name);
+        }
+        ,browser: "Google Meet"
       },
       {
         match: /^https?:\/\/localhost.*$/,
         browser: "Firefox Developer Edition"
       },
       {
-        match: ({opener}) => ["Gmail","Google Calendar","Google Meet","Slack"].includes(opener.name),
+        match: ({opener}) => ["Gmail","Google Calendar","Google Meet","Slack","Limitless"].includes(opener.name),
         browser: {
           name: "Microsoft Edge",
           profile: "Profile 1"

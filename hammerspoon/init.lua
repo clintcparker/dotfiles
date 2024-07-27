@@ -24,6 +24,8 @@ configLog = hs.logger.new("config", "info")
 hs.loadSpoon("LitraGlow")
 hs.loadSpoon("Rewind")
 
+hs.loadSpoon("GoogleMeetManager")
+spoon.GoogleMeetManager:start()
 
 --#endregion Spoons
 
