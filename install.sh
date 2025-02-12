@@ -13,7 +13,9 @@ echo "running install script
        - install asdf  
            - and direnv  
        - install starship
-       - install macos terminals"
+       - install macos terminals
+       - install dotnet sdks"
+
 
 
 # Install Homebrew
@@ -106,6 +108,21 @@ if [ "$installEnv" != "linux" ]; then
     fish ~/.dotfiles/macos.fish
 fi
 
+if [ "$installEnv" != "linux" ]; then
+    # create the dotnet directory
+    sudo mkdir -p /usr/local/share/dotnet
+    # change the permissions of the directory
+    sudo chmod -R 775 /usr/local/share/dotnet
+
+    curl -sSL https://dot.net/v1/dotnet-install.sh | sudo bash /dev/stdin --channel 9.0 --install-dir /usr/local/share/dotnet/ 
+    curl -sSL https://dot.net/v1/dotnet-install.sh | sudo bash /dev/stdin --channel 8.0 --install-dir /usr/local/share/dotnet/ 
+    curl -sSL https://dot.net/v1/dotnet-install.sh | sudo bash /dev/stdin --channel 7.0 --install-dir /usr/local/share/dotnet/ 
+    curl -sSL https://dot.net/v1/dotnet-install.sh | sudo bash /dev/stdin --channel 6.0 --install-dir /usr/local/share/dotnet/ 
+fi
+
+if [ "$installEnv" == "linux" ]; then
+    curl -sSL https://dot.net/v1/dotnet-install.sh | sudo bash /dev/stdin --channel LTS 
+fi
 
 #end timer
 duration=$(( SECONDS - start ))

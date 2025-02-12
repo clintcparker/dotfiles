@@ -3,15 +3,19 @@ if status is-interactive
 end
 
 
-if test -e /opt/homebrew/opt/asdf/libexec/asdf.fish                     
-	source /opt/homebrew/opt/asdf/libexec/asdf.fish
+# ASDF configuration code
+if test -z $ASDF_DATA_DIR
+    set _asdf_shims "$HOME/.asdf/shims"
 else
-	if test -e /usr/local/opt/asdf/libexec/asdf.fish
-		source /usr/local/opt/asdf/libexec/asdf.fish
-	else
-		source /home/linuxbrew/.linuxbrew/opt/asdf/libexec/asdf.fish
-	end
+    set _asdf_shims "$ASDF_DATA_DIR/shims"
 end
+
+# Do not use fish_add_path (added in Fish 3.2) because it
+# potentially changes the order of items in PATH
+if not contains $_asdf_shims $PATH
+    set -gx --prepend PATH $_asdf_shims
+end
+set --erase _asdf_shims
 
 direnv hook fish | source
 set -g direnv_fish_mode eval_on_arrow

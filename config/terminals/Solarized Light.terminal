@@ -178,15 +178,6 @@
 	</data>
 	<key>CursorType</key>
 	<integer>0</integer>
-	<key>Font</key>
-	<data>
-	YnBsaXN0MDDUAQIDBAUGBwpYJHZlcnNpb25ZJGFyY2hpdmVyVCR0b3BYJG9iamVjdHMS
-	AAGGoF8QD05TS2V5ZWRBcmNoaXZlctEICVRyb290gAGkCwwVFlUkbnVsbNQNDg8QERIT
-	FFZOU1NpemVYTlNmRmxhZ3NWTlNOYW1lViRjbGFzcyNAJgAAAAAAABAQgAKAA18QJkNh
-	c2theWRpYUNvdmVOZXJkRm9udENvbXBsZXRlTS1SZWd1bGFy0hcYGRpaJGNsYXNzbmFt
-	ZVgkY2xhc3Nlc1ZOU0ZvbnSiGRtYTlNPYmplY3QIERokKTI3SUxRU1heZ253foWOkJKU
-	vcLN1t3gAAAAAAAAAQEAAAAAAAAAHAAAAAAAAAAAAAAAAAAAAOk=
-	</data>
 	<key>FontHeightSpacing</key>
 	<integer>1</integer>
 	<key>FontWidthSpacing</key>
@@ -202,6 +193,8 @@
 	cqIWGFhOU09iamVjdAgRGiQpMjdJTFFTV11kand+qKqssbzFzdAAAAAAAAABAQAAAAAA
 	AAAZAAAAAAAAAAAAAAAAAAAA2Q==
 	</data>
+	<key>StrictVTKeypad</key>
+	<false/>
 	<key>TerminalType</key>
 	<string>xterm-256color</string>
 	<key>TextBoldColor</key>
