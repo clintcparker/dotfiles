@@ -42,10 +42,10 @@ module.exports = {
         //   name: "Microsoft Edge",
         //   profile: "Default"
         // }
-      },
-      { //edge is being real dumb w/ msft sites
-        match: /^https?:\/\/.*\.microsoft\.com\/.*$/,
-        browser: "Firefox Developer Edition"
+      // },
+      // { //edge is being real dumb w/ msft sites
+      //   match: /^https?:\/\/.*\.microsoft\.com\/.*$/,
+      //   browser: "Firefox Developer Edition"
       }
     ]
   }
