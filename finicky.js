@@ -16,7 +16,7 @@ module.exports = {
       {
         // match: /^https?:\/\/meet\.google\.com.*$/,
         match: ({url, opener}) =>{
-          ["Gmail","Google Calendar","Google Meet","Slack","Limitless"].includes(opener.name)
+          ["Gmail","Google Calendar","Google Meet","ClockShark - Slack","Limitless"].includes(opener.name)
           finicky.log(url.host);
           return url.host === "meet.google.com" && ["Gmail","Google Calendar","Google Meet","Slack","Limitless"].includes(opener.name);
         }
@@ -27,7 +27,7 @@ module.exports = {
         browser: "Firefox Developer Edition"
       },
       {
-        match: ({opener}) => ["Gmail","Google Calendar","Google Meet","Slack","Limitless"].includes(opener.name),
+        match: ({opener}) => ["Gmail","Google Calendar","Google Meet","ClockShark - Slack","Limitless"].includes(opener.name),
         browser: {
           name: "Microsoft Edge",
           profile: "Profile 1"
