@@ -1,11 +1,21 @@
 ---
 title: Work
 ---
-(quit everything)
+(hide dock)
+(hide desktop)
+
 
 Limitless
 Microsoft Edge
 Google Calendar
-ClockShark - Slack
+@ClockShark - Slack
 Gmail
 Google Meet
+
+!!!Finder
+
+
+layout="Work"
+	<moom_snapshot.snippet
+
+

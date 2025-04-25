@@ -1,6 +1,6 @@
 direnv 2.34.0
 git 2.44.0
-ruby 3.3.0
+ruby 3.4.2
 nodejs 18.11.0
 python 3.12.2
 rust 1.77.0
