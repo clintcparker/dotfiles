@@ -1,0 +1,22 @@
+# Custom blocks migrated from Pi-hole
+# Note: Pi-hole regex patterns (^ad..., ^analytics..., etc.) cannot be
+# directly translated to hosts-format — numa uses domain matching, not regex.
+# The plain-domain entries from your Pi-hole deny list are included here.
+ingest.sentry.io
+anapurnatop.top
+facebook.com
+www.facebook.com
+doubleclick.net
+googlesyndication.com
+ezodn.com
+ezoic.net
+audienceexposure.com
+ybs2ffs7v.com
+fvcwqkkqmuv.com
+12ezo5v60.com
+adsco.re
+iubenda.com
+mopinion.com
+mouseflow.com
+luckyorange.com
+mt.ssai.peacocktv.com
