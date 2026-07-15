@@ -59,7 +59,7 @@ threshold = 100
 discharging_symbol = " "
 style = "yellow"
 
-[custom.ssh]
-command = 'echo foo' # shows output of command
-when = ''' ssh -TO check cs '''
-format = '🔛'
+# [custom.ssh]
+# command = 'echo foo' # shows output of command
+# when = ''' ssh -TO check cs '''
+# format = '🔛'
