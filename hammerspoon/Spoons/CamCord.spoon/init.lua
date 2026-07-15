@@ -78,7 +78,7 @@ function obj:newWatcher(cameraOn, cameraOff)
             end
             watcher.cameraOnCallback()
         else
-            -- wait for 1 sencond then turn of the light if no other cameras are in use
+            -- wait for 1 second then turn off the light if no other cameras are in use
             hs.timer.doAfter(1, function()
                 if not anyCamInUse() then
                     if (obj.visualIndicator) then
@@ -87,19 +87,11 @@ function obj:newWatcher(cameraOn, cameraOff)
                     watcher.cameraOffCallback()
                 end
             end)
-            
-            -- turn off lights
-            -- if (obj.visualIndicator) then
-            --     hideRedDot()
-            -- end
-            -- watcher.cameraOffCallback()
         end
     end
 
     function watcher:start()
         for i,cam in pairs(hs.camera.allCameras()) do
-            -- print(i, cam)
-            -- if cam:name() == camName then
             obj.logger.i("starting camera watcher for " .. cam:name() .. "")
             cam:setPropertyWatcherCallback(on_cam_inner):startPropertyWatcher()
             if(cam:isInUse()) then
@@ -107,21 +99,14 @@ function obj:newWatcher(cameraOn, cameraOff)
                     showRedDot(cam)
                 end
                 watcher.cameraOnCallback()
-                -- cam:setWatcherCallback(on_cam2):startWatcher()
-                -- break;
             end
         end
     end
 
     function watcher:stop()
         for i,cam in pairs(hs.camera.allCameras()) do
-            -- print(i, cam)
-            -- if cam:name() == camName then
             obj.logger.i("stopping camera watcher for " .. cam:name() .. "")
-                cam:stopPropertyWatcher()
-                -- cam:setWatcherCallback(on_cam2):startWatcher()
-                -- break;
-            -- end
+            cam:stopPropertyWatcher()
         end
     end
 

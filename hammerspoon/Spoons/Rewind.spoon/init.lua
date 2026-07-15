@@ -13,7 +13,7 @@ obj.author = "clintcparker <clintcparker@gmail.com>"
 obj.homepage = "https://clintparker.com"
 obj.license = "MIT - https://opensource.org/licenses/MIT"
 obj.logger = hs.logger.new(obj.name, "info")
-obj.loopcalls = 1
+obj.home = os.getenv("HOME")
 
 
 
@@ -26,9 +26,9 @@ obj.loopcalls = 1
 ---  * None
 function obj:turnOn()
     obj.logger.i("on")
-    for i = 1, obj.loopcalls do
-        hs.execute("~/.bin/resumeRewindAudio");
-    end
+    hs.task.new(obj.home .. "/.bin/resumeRewindAudio", function(exitCode, _, _)
+        if exitCode ~= 0 then obj.logger.w("resumeRewindAudio failed (exit " .. exitCode .. ")") end
+    end):start()
 end
 
 --- Rewind:turnOff()
@@ -39,9 +39,9 @@ end
 ---  * None
 function obj:turnOff()
     obj.logger.i("off")
-    for i = 1, obj.loopcalls do
-        hs.execute("~/.bin/pauseRewindAudio");
-    end
+    hs.task.new(obj.home .. "/.bin/pauseRewindAudio", function(exitCode, _, _)
+        if exitCode ~= 0 then obj.logger.w("pauseRewindAudio failed (exit " .. exitCode .. ")") end
+    end):start()
 end
 
 --- Rewind:init()
@@ -51,9 +51,7 @@ end
 --- Parameters:
 ---  * None
 function obj:init()
-    hs.urlevent.bind("rewind", function(eventName, params)
-        print(eventName)
-        -- print(params["action"])
+    hs.urlevent.bind("rewind", function(_, params)
         if params["action"] == "on" then
             obj:turnOn()
         end
@@ -65,6 +63,3 @@ end
 
 
 return obj
-
-
--- hs.usb.attachedDevices()
